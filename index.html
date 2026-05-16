@@ -223,8 +223,9 @@
     .hub-icon.github   { background: rgba(139, 148, 158, 0.15); }
     .hub-icon.email    { background: rgba(63, 185, 80, 0.15); }
 
+    .hub-text { min-width: 0; }
     .hub-text strong { display: block; font-weight: 600; font-size: 0.95rem; }
-    .hub-text span   { font-size: 0.8rem; color: var(--text-muted); }
+    .hub-text span   { font-size: 0.8rem; color: var(--text-muted); display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
     /* ── ABOUT ── */
     .about-text {
@@ -653,12 +654,26 @@
     <h2 class="section-title">Certifications</h2>
     <div class="cert-grid">
       <div class="cert-item">
-        <span class="cert-icon">☁️</span>
-        <span>AWS Certified Cloud Practitioner</span>
+        <span class="cert-icon">⎈</span>
+        <div>
+          <strong style="display:block;font-size:0.875rem;">CKAD: Certified Kubernetes Application Developer</strong>
+          <span style="font-size:0.75rem;color:var(--text-muted);">The Linux Foundation · Issued May 2026</span>
+        </div>
+      </div>
+      <div class="cert-item">
+        <span class="cert-icon">⎈</span>
+        <div>
+          <strong style="display:block;font-size:0.875rem;">KCSA: Kubernetes and Cloud Native Security Associate</strong>
+          <span style="font-size:0.75rem;color:var(--text-muted);">The Linux Foundation · Issued Mar 2026</span>
+        </div>
       </div>
       <div class="cert-item">
         <span class="cert-icon">⎈</span>
         <span>KCNA: Kubernetes and Cloud Native Associate</span>
+      </div>
+      <div class="cert-item">
+        <span class="cert-icon">☁️</span>
+        <span>AWS Certified Cloud Practitioner</span>
       </div>
       <div class="cert-item">
         <span class="cert-icon">🌐</span>
@@ -671,6 +686,28 @@
       <div class="cert-item">
         <span class="cert-icon">🔷</span>
         <span>Microsoft Certified: Azure Data Fundamentals</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- LANGUAGES -->
+  <section id="languages">
+    <p class="section-label">// languages</p>
+    <h2 class="section-title">Languages</h2>
+    <div class="cert-grid">
+      <div class="cert-item">
+        <span class="cert-icon">🇪🇸</span>
+        <div>
+          <strong style="display:block;font-size:0.875rem;">Español</strong>
+          <span style="font-size:0.75rem;color:var(--text-muted);">Native or bilingual proficiency</span>
+        </div>
+      </div>
+      <div class="cert-item">
+        <span class="cert-icon">🇬🇧</span>
+        <div>
+          <strong style="display:block;font-size:0.875rem;">English</strong>
+          <span style="font-size:0.75rem;color:var(--text-muted);">Full professional proficiency</span>
+        </div>
       </div>
     </div>
   </section>
