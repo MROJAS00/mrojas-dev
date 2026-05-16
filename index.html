@@ -191,6 +191,21 @@
     .lang-item strong { display: block; font-size: .9rem; }
     .lang-item span { font-size: .78rem; color: var(--text-muted); }
 
+    /* ─── NOW ─── */
+    .now-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+    .now-card {
+      background: var(--bg-2); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1.4rem; display: flex; flex-direction: column; gap: .5rem;
+    }
+    .now-card-label {
+      font-family: 'JetBrains Mono', monospace; font-size: .68rem;
+      text-transform: uppercase; letter-spacing: .1em; color: var(--text-muted);
+    }
+    .now-card-value { font-size: .95rem; font-weight: 600; line-height: 1.4; }
+    .now-card-sub { font-size: .78rem; color: var(--text-muted); }
+    .now-card.highlight { border-color: rgba(88,166,255,.35); background: rgba(88,166,255,.05); }
+    .now-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--accent-2); margin-right: .4rem; animation: pulse 2s infinite; }
+
     /* ─── FOOTER ─── */
     footer { border-top: 1px solid var(--border); text-align: center; padding: 2rem; color: var(--text-muted); font-size: .78rem; font-family: 'JetBrains Mono', monospace; }
 
@@ -226,6 +241,7 @@
   <span class="nav-logo">mrojas.dev</span>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
+    <li><a href="#now">Now</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#certs">Certs</a></li>
@@ -263,8 +279,8 @@
     <div class="stat-label">Certifications</div>
   </div>
   <div class="stat">
-    <div class="stat-num" data-target="2">0</div>
-    <div class="stat-label">Cloud providers</div>
+    <div class="stat-num" data-target="5">0</div>
+    <div class="stat-label">SRE / Platform roles</div>
   </div>
   <div class="stat">
     <div class="stat-num" data-target="247">0</div>
@@ -390,6 +406,42 @@
     Currently Platform Engineer at Kamstrup, previously SRE at companies ranging from SaaS startups to
     large-scale enterprise. I hold <strong style="color:var(--text)">9 certifications</strong> across
     Kubernetes, AWS, Azure, and networking — and I'm always working on the next one.
+  </p>
+</section>
+
+<!-- NOW -->
+<section id="now">
+  <p class="section-label">// now</p>
+  <h2 class="section-title">What I'm doing now</h2>
+  <div class="now-grid reveal">
+
+    <div class="now-card highlight">
+      <span class="now-card-label">Current role</span>
+      <span class="now-card-value"><span class="now-dot"></span>Platform Engineer</span>
+      <span class="now-card-sub">Kamstrup · Málaga, Spain · Hybrid</span>
+    </div>
+
+    <div class="now-card">
+      <span class="now-card-label">Studying next</span>
+      <span class="now-card-value">⎈ CKS</span>
+      <span class="now-card-sub">Certified Kubernetes Security Specialist</span>
+    </div>
+
+    <div class="now-card">
+      <span class="now-card-label">Open to</span>
+      <span class="now-card-value">Freelance projects</span>
+      <span class="now-card-sub">Platform, SRE & cloud infrastructure engagements</span>
+    </div>
+
+    <div class="now-card">
+      <span class="now-card-label">Location</span>
+      <span class="now-card-value">📍 Málaga, Spain</span>
+      <span class="now-card-sub">Remote-friendly · CET timezone</span>
+    </div>
+
+  </div>
+  <p style="margin-top:1.25rem;font-size:.78rem;color:var(--text-muted);font-family:'JetBrains Mono',monospace;">
+    Last updated: May 2026 · Inspired by <a href="https://nownownow.com/about" target="_blank" rel="noopener" style="color:var(--text-muted);text-decoration:underline;">/now pages</a>
   </p>
 </section>
 
