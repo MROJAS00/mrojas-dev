@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Miguel Rojas — Platform Engineer</title>
+  <meta name="description" content="Platform & Site Reliability Engineer with 6+ years operating high-availability distributed systems on AWS and Kubernetes." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d1117;
+      --bg-2: #161b22;
+      --bg-3: #21262d;
+      --border: #30363d;
+      --text: #e6edf3;
+      --text-muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-2: #3fb950;
+      --accent-glow: rgba(88, 166, 255, 0.15);
+      --radius: 12px;
+      --transition: 0.2s ease;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    a { color: var(--accent); text-decoration: none; transition: color var(--transition); }
+    a:hover { color: #79b8ff; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13, 17, 23, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+
+    .nav-logo {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color var(--transition);
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── HERO ── */
+    .hero {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 6rem 2rem 4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .hero-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--accent);
+      background: var(--accent-glow);
+      border: 1px solid rgba(88, 166, 255, 0.3);
+      display: inline-block;
+      padding: 0.3rem 0.8rem;
+      border-radius: 100px;
+      width: fit-content;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+
+    .hero h1 span { color: var(--accent); }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 600px;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.4rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all var(--transition);
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #0d1117;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background: #79b8ff;
+      color: #0d1117;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 20px rgba(88, 166, 255, 0.35);
+    }
+
+    .btn-ghost {
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: transparent;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    /* ── SECTION BASE ── */
+    section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      letter-spacing: -0.02em;
+    }
+
+    /* ── HUB LINKS ── */
+    .hub-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .hub-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.4rem 1.6rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: all var(--transition);
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .hub-card:hover {
+      border-color: var(--accent);
+      background: var(--bg-3);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(88, 166, 255, 0.12);
+      color: var(--text);
+    }
+
+    .hub-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.3rem;
+    }
+
+    .hub-icon.linkedin { background: rgba(10, 102, 194, 0.2); }
+    .hub-icon.github   { background: rgba(139, 148, 158, 0.15); }
+    .hub-icon.email    { background: rgba(63, 185, 80, 0.15); }
+
+    .hub-text strong { display: block; font-weight: 600; font-size: 0.95rem; }
+    .hub-text span   { font-size: 0.8rem; color: var(--text-muted); }
+
+    /* ── ABOUT ── */
+    .about-text {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      max-width: 700px;
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+
+    .skill-group {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.4rem;
+    }
+
+    .skill-group h4 {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 0.9rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag {
+      background: var(--bg-3);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* ── EXPERIENCE ── */
+    .timeline { display: flex; flex-direction: column; gap: 0; }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 1fr;
+      position: relative;
+      padding-left: 2rem;
+      padding-bottom: 2.5rem;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .timeline-item:last-child::before { display: none; }
+
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      left: -5px;
+      top: 8px;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--bg);
+      box-shadow: 0 0 0 2px var(--accent);
+    }
+
+    .timeline-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .timeline-role {
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .timeline-company {
+      font-size: 0.9rem;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+
+    .timeline-desc {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .timeline-desc li {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .timeline-desc li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--border);
+    }
+
+    /* ── CERTIFICATIONS ── */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .cert-item {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.875rem;
+    }
+
+    .cert-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* ── AVAILABILITY BADGE ── */
+    .availability {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(63, 185, 80, 0.1);
+      border: 1px solid rgba(63, 185, 80, 0.3);
+      color: var(--accent-2);
+      font-size: 0.8rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 100px;
+      font-weight: 500;
+    }
+
+    .availability::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent-2);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav { padding: 0 1rem; }
+      .nav-links { gap: 1rem; }
+      .hero { padding: 4rem 1rem 3rem; }
+      section { padding: 3rem 1rem; }
+      .hub-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <span class="nav-logo">mrojas.dev</span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <span class="availability">Available for freelance work</span>
+    <div class="hero-tag">Platform &amp; SRE Engineer · AWS · Kubernetes</div>
+    <h1>Hi, I'm <span>Miguel Rojas</span></h1>
+    <p class="hero-subtitle">
+      Platform Engineer with 6+ years operating high-availability distributed systems on AWS and Kubernetes.
+      I help teams build reliable, automated, and scalable cloud-native platforms.
+    </p>
+    <div class="hero-cta">
+      <a href="mailto:miguelrojascerdeiras@gmail.com" class="btn btn-primary">
+        ✉ Get in touch
+      </a>
+      <a href="#experience" class="btn btn-ghost">View my experience</a>
+    </div>
+  </div>
+
+  <!-- HUB -->
+  <section id="contact">
+    <p class="section-label">// connect</p>
+    <h2 class="section-title">Find me online</h2>
+    <div class="hub-grid">
+      <a href="https://www.linkedin.com/in/mrojas00/" target="_blank" rel="noopener" class="hub-card">
+        <div class="hub-icon linkedin">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#0a66c2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </div>
+        <div class="hub-text">
+          <strong>LinkedIn</strong>
+          <span>Professional profile</span>
+        </div>
+      </a>
+
+      <a href="https://github.com/MROJAS00" target="_blank" rel="noopener" class="hub-card">
+        <div class="hub-icon github">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#e6edf3"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        </div>
+        <div class="hub-text">
+          <strong>GitHub</strong>
+          <span>Code &amp; projects</span>
+        </div>
+      </a>
+
+      <a href="mailto:miguelrojascerdeiras@gmail.com" class="hub-card">
+        <div class="hub-icon email">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3fb950" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div class="hub-text">
+          <strong>Email</strong>
+          <span>miguelrojascerdeiras@gmail.com</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-label">// about</p>
+    <h2 class="section-title">Professional Summary</h2>
+    <p class="about-text">
+      Platform and Site Reliability Engineer with <strong>6+ years</strong> of experience operating high-availability,
+      distributed systems across AWS, Kubernetes, and Linux-based environments. Strong background in automation,
+      operations, and incident response — with hands-on experience in 24x7 on-call rotations, root-cause analysis,
+      and reliability engineering.
+    </p>
+    <br/>
+    <p class="about-text">
+      Currently Platform Engineer at Kamstrup, with proven delivery in SRE roles supporting mission-critical services.
+      I bring deep expertise in cloud-native platforms, infrastructure-as-code, and monitoring — focused on reducing
+      MTTR, improving reliability, and enabling teams to move fast without breaking things.
+    </p>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <p class="section-label">// skills</p>
+    <h2 class="section-title">Core Technical Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <h4>AWS &amp; Cloud</h4>
+        <div class="skill-tags">
+          <span class="tag">EC2</span>
+          <span class="tag">VPC</span>
+          <span class="tag">IAM</span>
+          <span class="tag">S3</span>
+          <span class="tag">EKS</span>
+          <span class="tag">CloudWatch</span>
+          <span class="tag">ALB/NLB</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Containers &amp; Platform</h4>
+        <div class="skill-tags">
+          <span class="tag">Kubernetes</span>
+          <span class="tag">Docker</span>
+          <span class="tag">EKS</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Infrastructure as Code</h4>
+        <div class="skill-tags">
+          <span class="tag">Terraform</span>
+          <span class="tag">Ansible</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Automation &amp; CI/CD</h4>
+        <div class="skill-tags">
+          <span class="tag">Bash</span>
+          <span class="tag">Python</span>
+          <span class="tag">GitLab CI/CD</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Monitoring &amp; Observability</h4>
+        <div class="skill-tags">
+          <span class="tag">Prometheus</span>
+          <span class="tag">Grafana</span>
+          <span class="tag">Elastic Stack</span>
+          <span class="tag">CloudWatch</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Systems &amp; Networking</h4>
+        <div class="skill-tags">
+          <span class="tag">Linux</span>
+          <span class="tag">Networking</span>
+          <span class="tag">Performance tuning</span>
+          <span class="tag">Fault isolation</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <p class="section-label">// experience</p>
+    <h2 class="section-title">Professional Experience</h2>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-meta">Apr 2025 – Present · Málaga, Spain</div>
+        <div class="timeline-role">Platform Engineer</div>
+        <div class="timeline-company">Kamstrup</div>
+        <ul class="timeline-desc">
+          <li>Operate and evolve a cloud-native platform supporting business-critical services</li>
+          <li>Lead reliability and availability improvements across Kubernetes-based systems</li>
+          <li>Drive automation and Standard Operating Procedures (SOPs) for platform operations</li>
+          <li>Collaborate with service teams to improve latency, performance, and efficiency</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-meta">Sep 2023 – Apr 2025 · Spain</div>
+        <div class="timeline-role">Site Reliability Engineer</div>
+        <div class="timeline-company">UST</div>
+        <ul class="timeline-desc">
+          <li>Operated 24x7 production systems and participated in on-call rotations</li>
+          <li>Led incident response and root-cause analysis to improve system resilience</li>
+          <li>Automated operational workflows using Bash, Python, and GitLab CI/CD</li>
+          <li>Improved monitoring and alerting to reduce MTTR and prevent recurring incidents</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-meta">Jan 2023 – Aug 2023 · Málaga, Spain</div>
+        <div class="timeline-role">Site Reliability Engineer</div>
+        <div class="timeline-company">Plytix PIM</div>
+        <ul class="timeline-desc">
+          <li>Supported a high-availability SaaS platform with strict reliability requirements</li>
+          <li>Operated Kubernetes workloads and optimized performance of distributed systems</li>
+          <li>Enhanced observability using Prometheus and Grafana</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-meta">Aug 2022 – Jan 2023 · Málaga, Spain</div>
+        <div class="timeline-role">Site Reliability Engineer</div>
+        <div class="timeline-company">OSP – Otto Group Solution Provider</div>
+        <ul class="timeline-desc">
+          <li>Supported large-scale enterprise platforms with cloud-native and SRE practices</li>
+          <li>Contributed to operational excellence through automation and standardized procedures</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-meta">Mar 2022 – Aug 2022 · Málaga, Spain</div>
+        <div class="timeline-role">Site Reliability Engineer</div>
+        <div class="timeline-company">T2C</div>
+        <ul class="timeline-desc">
+          <li>Implemented DevOps and SRE practices for cloud-based systems</li>
+          <li>Supported CI/CD pipelines and infrastructure automation</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-meta">Jan 2020 – Mar 2022 · Málaga, Spain</div>
+        <div class="timeline-role">Business Intelligence Consultant</div>
+        <div class="timeline-company">T2C</div>
+        <ul class="timeline-desc">
+          <li>Delivered BI solutions and data platforms with automation and cloud enablement</li>
+          <li>Built data pipelines and supported analytics-driven decision making</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-meta">Jun 2019 – Jan 2020 · Málaga, Spain</div>
+        <div class="timeline-role">System Administrator</div>
+        <div class="timeline-company">GECONSAA HISPALENSE SL</div>
+        <ul class="timeline-desc">
+          <li>Administration of Linux and Windows Server environments</li>
+          <li>Incident resolution (software &amp; hardware) and backup management</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certs">
+    <p class="section-label">// certifications</p>
+    <h2 class="section-title">Certifications</h2>
+    <div class="cert-grid">
+      <div class="cert-item">
+        <span class="cert-icon">☁️</span>
+        <span>AWS Certified Cloud Practitioner</span>
+      </div>
+      <div class="cert-item">
+        <span class="cert-icon">⎈</span>
+        <span>KCNA: Kubernetes and Cloud Native Associate</span>
+      </div>
+      <div class="cert-item">
+        <span class="cert-icon">🌐</span>
+        <span>Cisco CCNA</span>
+      </div>
+      <div class="cert-item">
+        <span class="cert-icon">🔷</span>
+        <span>Microsoft Certified: Azure Data Engineer Associate</span>
+      </div>
+      <div class="cert-item">
+        <span class="cert-icon">🔷</span>
+        <span>Microsoft Certified: Azure Data Fundamentals</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Miguel Rojas · Platform Engineer · Málaga, Spain · miguelrojascerdeiras@gmail.com</p>
+    <p style="margin-top:0.5rem; color: #484f58;">Built with GitHub Pages</p>
+  </footer>
+
+</body>
+</html>
